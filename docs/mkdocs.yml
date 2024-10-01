@@ -1,0 +1,28 @@
+docs_dir: .
+markdown_extensions:
+- pymdownx.highlight:
+    anchor_linenums: true
+- pymdownx.inlinehilite
+- pymdownx.superfences
+- pymdownx.tabbed:
+    alternate_style: true
+- pymdownx.tasklist:
+    custom_checkbox: true
+nav:
+- Dos Memory Models Explained: dos-memory-models-explained/article.md
+plugins:
+- search
+site_dir: ../site
+site_name: 一些零零散散的翻译文章。
+theme:
+  features:
+  - navigation.tabs
+  - navigation.sections
+  - navigation.top
+  font:
+    code: Roboto Mono
+    text: Roboto
+  icon:
+    repo: fontawesome/brands/github
+  name: material
+  palette: null
