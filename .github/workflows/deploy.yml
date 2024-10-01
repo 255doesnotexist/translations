@@ -27,7 +27,7 @@ jobs:
 
       - name: Generate index.md
         run: |
-          python - <<EOF
+          python - <<PYTHON_END
           import os
 
           with open('index.md', 'w', encoding='utf-8') as f:
@@ -38,26 +38,13 @@ jobs:
                       if os.path.exists(article_path):
                           title = dirname.replace('-', ' ').title()
                           f.write(f'- [{title}]({article_path})\n')
-          EOF
+          PYTHON_END
 
       - name: Commit index.md
-        uses: actions/github-script@v6
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          script: |
-            const fs = require('fs');
-            if (fs.existsSync('index.md')) {
-              const content = fs.readFileSync('index.md', 'utf8');
-              const encodedContent = Buffer.from(content).toString('base64');
-
-              github.rest.repos.createOrUpdateFileContents({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                path: 'index.md',
-                message: 'Update index.md',
-                content: encodedContent,
-                branch: 'main',  # 或者你的主分支名称
-              });
-            }
+          commit_message: "Update index.md"
+          file_pattern: index.md
 
       - name: Build website
         run: mkdocs build
