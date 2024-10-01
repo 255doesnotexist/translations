@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # 或者你的主分支名称
 
 permissions:
   contents: write
@@ -32,10 +32,12 @@ jobs:
 
           with open('index.md', 'w', encoding='utf-8') as f:
               f.write('# 翻译项目\n\n')  # 设置中文标题
-              for filename in os.listdir('.'):
-                  if filename.endswith('.md') and filename != 'index.md':
-                      title = filename[:-3].replace('-', ' ').title()
-                      f.write(f'- [{title}]({filename})\n')
+              for dirname in os.listdir('.'):
+                  if os.path.isdir(dirname):
+                      article_path = os.path.join(dirname, 'article.md')
+                      if os.path.exists(article_path):
+                          title = dirname.replace('-', ' ').title()
+                          f.write(f'- [{title}]({article_path})\n')
           EOF
 
       - name: Commit index.md
@@ -52,8 +54,8 @@ jobs:
                 repo: context.repo.repo,
                 path: 'index.md',
                 message: 'Update index.md',
-                content: encodedContent, 
-                branch: 'main',
+                content: encodedContent,
+                branch: 'main',  # 或者你的主分支名称
               });
             }
 
