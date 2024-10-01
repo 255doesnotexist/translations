@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs-material
+
+      - name: Generate index.md
+        run: |
+          python - <<EOF
+          import os
+
+          with open('index.md', 'w', encoding='utf-8') as f:
+              f.write('# 翻译项目\n\n')  # 设置中文标题
+              for filename in os.listdir('.'):
+                  if filename.endswith('.md') and filename != 'index.md':
+                      title = filename[:-3].replace('-', ' ').title()
+                      f.write(f'- [{title}]({filename})\n')
+          EOF
+
+      - name: Commit index.md
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            if (fs.existsSync('index.md')) {
+              github.rest.repos.createOrUpdateFileContents({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                path: 'index.md',
+                message: 'Update index.md',
+                content: fs.readFileSync('index.md', 'utf8').toString('base64'),
+                branch: 'main',
+              });
+            }
+
+      - name: Build website
+        run: mkdocs build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: site
+          publish_branch: gh-pages  # GitHub Pages 分支名称
