@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&#x91cd;&#x65b0;&#x5ba1;&#x89c6; DOS &#x5185;&#x5b58;&#x6a21;&#x578b;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+/* From extension marp-team.marp-vscode */
+#__marp-vscode {
+  all: revert;
+}
+
+/* Override VS Code default CSS rules reverting to initial
+   https://github.com/microsoft/vscode/blob/master/src/vs/workbench/contrib/webview/browser/pre/main.js#L53 */
+body.marp-vscode {
+  padding: 0;
+}
+
+body.marp-vscode img {
+  max-width: unset;
+  max-height: unset;
+}
+
+body.marp-vscode a,
+body.marp-vscode a:hover,
+body.marp-vscode code {
+  color: unset;
+}
+
+body.marp-vscode blockquote {
+  background: unset;
+  border-color: unset;
+}
+
+@media screen {
+  body.marp-vscode {
+    overflow-y: scroll;
+  }
+
+  #__marp-vscode [data-marp-vscode-slide-wrapper] {
+    margin: 20px;
+  }
+
+  #__marp-vscode svg[data-marpit-svg] {
+    box-shadow: 0 5px 10px rgb(0 0 0 / 25%);
+    display: block;
+    margin: 0;
+  }
+
+  /* Based on https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+  #code-csp-warning {
+    background-color: #444;
+    box-shadow: 1px 1px 1px rgb(0 0 0 / 25%);
+    color: white;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 22px;
+    margin: 16px;
+    padding: 6px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    word-wrap: break-word;
+  }
+
+  #code-csp-warning:hover {
+    text-decoration: none;
+    background-color: #007acc;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 25%);
+  }
+}
+
+@media print {
+  body.marp-vscode #code-csp-warning {
+    display: none;
+  }
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <blockquote>
+<p>原文链接：<a href="https://blogsystem5.substack.com/p/dos-memory-models">https://blogsystem5.substack.com/p/dos-memory-models</a></p>
+<p>作者：Julio Merino</p>
+<p>发表日期：Sep 30, 2024</p>
+</blockquote>
+<h2 id="重新审视-dos-内存模型">重新审视 DOS 内存模型</h2>
+<p>年初，我写了一些<a href="https://blogsystem5.substack.com/p/from-0-to-1-mb-in-dos">关于</a><a href="https://blogsystem5.substack.com/p/beyond-the-1-mb-barrier-in-dos">DOS 如何克服 x86 实模式内存限制的</a><a href="https://blogsystem5.substack.com/p/running-gnu-on-dos-with-djgpp">文章</a>，介绍 DOS 如何克服 x86 实模式内存限制的技巧的文章。有一个问题出现了，但一直没有得到解答：当时的编译器提供了哪些不同的“模型”？看一下 Borland Turbo C++ 的代码生成菜单：</p>
+<p><img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F19dc46c5-0bc9-4e74-889e-2d27b0e2c294_2132x1599.png" alt="Borland Turbo C++ showing its Code Generation menu, which displays the list of models we cover in this article."></p>
+<p>Tiny，small，medium，compact，large，huge……这些选项是什么意思？它们的作用是什么？更重要的是……在当今 64 位机器和数 GB 内存的世界中，这些遗留物还有意义吗？为了回答这些问题，我们必须先简要回顾一下 8086 架构和 DOS 支持的二进制格式。</p>
+<h2 id="8086-分段">8086 分段</h2>
+<p>在 8086 架构中（DOS 的目标架构），内存引用由两部分组成：一个 <strong>2 字节段</strong> “标识符”和一个 <strong>2 字节偏移量</strong> 在段内。这些对通常表示为 <code>段：偏移量</code>。</p>
+<p>段是连续的 64KB 内存块，并由其基地址标识。为了能够寻址 8086 支持的全部 1MB 内存，段之间偏移 16 字节。由此可以推断，段是重叠的，这意味着一个特定的物理内存位置可以由多个段/偏移量对引用。</p>
+<p><img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4ad9400d-9813-4b87-b69f-dc0ed449aa46_2370x960.png" alt="Representation of two consecutive 8086 segments and how a single physical memory address can be expressed as different segment/offset pairs."></p>
+<p>例如，分段地址 <code>B800h:0032h</code> 对应于物理地址 <code>B8032h</code>，通过 <code>B800h * 10h + 0032h</code> 计算得出。虽然这对人类来说是可读的，但这并不是机器级指令对其进行编码的方式。相反，指令依赖于 <strong>段寄存器</strong> 来指定要访问的段，8086 支持其中的四个：CS（代码段）、DS（数据段）、ES（额外数据段）和 SS（堆栈段）。了解这一点后，访问此示例内存位置需要首先将 <code>B800h</code> 加载到 <code>DS</code> 中，然后引用 <code>DS:0032h</code>。</p>
+<p>指令依赖于段寄存器而不是每次内存访问都使用段标识符的原因之一是效率：编码要使用的段寄存器只需要 2 位（我们总共有 4 个段寄存器），而存储段基地址则需要 2 字节。稍后会详细介绍。</p>
+<h2 id="com-文件">COM 文件</h2>
+<p>COM 文件是您可以想到的最简单的可执行文件格式：它们包含原始机器代码，可以放置在几乎任何内存位置，并且无需任何后处理即可执行。没有重定位，没有共享库，没有任何需要担心的：您可以将二进制文件直接复制到内存中并运行它。</p>
+<p>它的工作方式是利用 8086 分段架构：将 COM 映像加载到<em>任何</em>段中，始终位于该段内的偏移量 100h 处。COM 映像中的所有内存地址都必须相对于此偏移量（这解释了您可能在过去看到的 <code>ORG 100h</code>），但映像不需要知道它被加载到哪个段中：加载器（在本例中是 DOS，但 COM 文件实际上来自 CP/M）将 CS、DS、ES 和 SS 设置为完全相同的段，并将控制权转移到 <code>CS:100h</code>。</p>
+<p><img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F52197e20-826c-4098-81fb-cf77218daf70_2160x1200.png" alt="At the top, representation of a COM file as it is stored on disk. At the bottom, an explanation of how DOS proceeds to load this COM file into two different segments."></p>
+<p>神奇！COM 文件本质上是 PIE（<a href="https://en.wikipedia.org/wiki/Position-independent_code">位置无关的可执行文件</a>），无需内核进行任何 MMU 或花哨的内存管理。</p>
+<p>不幸的是，并非一切都那么美好。COM 文件的问题在于它们的大小有限：因为它们被加载到一个段中，而段最多为 64KB 长，所以 COM 文件最大只能是 64KB（减去前面为 PSP 保留的 256 字节）。这包括代码<em>和</em>数据，而 64KB 对两者来说都不多。显然，当 COM 程序运行时，它可以自由支配处理器，并且可以通过重置 CS、DS、ES 和/或 SS 来访问其单个段之外的任何内存，但所有内存管理都留给了程序员。</p>
+<h2 id="exe-文件">EXE 文件</h2>
+<p>为了解决 DOS 中 COM 文件的限制，微软为 DOS 设计了一种不同的可执行文件格式：<a href="https://en.wikipedia.org/wiki/DOS_MZ_executable">EXE 文件</a>，也称为 MZ 可执行文件。</p>
+<p>与 COM 文件相比，EXE 文件具有一些内部结构，并且不受 64KB 限制的约束：它们可以包含更大的代码和数据块。但是……鉴于 8086 段最多仍然是 64KB 长，这怎么可能呢？答案很简单：EXE 文件包含<em>多个</em>段，并将代码和数据分布在它们上面。</p>
+<p>为了在运行时支持多个段，EXE 文件在其标头中包含重定位信息。从概念上讲，重定位告诉加载器二进制映像中的哪些位置包含“不完整”的指针，这些指针需要在将段加载到内存后用段的基地址进行修复。DOS 作为加载器，负责进行此修补。</p>
+<p><img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8baf9777-a52c-4956-8c39-a5cdec8dbf74_2520x780.png" alt="Representation of an EXE file and the content of one of its code segments. Within the code, we can see a near pointer and two far pointers that will require patching at runtime to point to the other segments in the binary."></p>
+<p>那么，EXE 中有多少个段呢？这取决于具体情况，因为并非所有程序都有相同的需求。有些程序整体很小，可以放在 COM 文件中。其他程序包含大量数据，但代码很少。还有一组程序包含大量代码和数据。等等。</p>
+<p>所以问题就变成了：通用的 EXE 格式如何以有效的方式支持这些选项？这就是内存模型变得重要的地方，但要谈论这些，我们必须绕道讨论指针类型。</p>
+<h2 id="指针类型">指针类型</h2>
+<p><a href="https://en.wikipedia.org/wiki/Locality_of_reference">局部性原理</a>指出“处理器倾向于在短时间内重复访问同一组内存位置”。这很容易理解：代码通常几乎按顺序运行，数据通常打包在连续的内存块中，如数组或结构体。</p>
+<p>因此，将<em>所有</em>内存地址表示为 4 字节 <code>段：偏移量</code>对将是一种浪费，这就是 8086 的分段再次对我们有利的地方。我们可以首先将一个段寄存器加载“我们所有数据”的基地址，然后我们只需要将地址记录为该段内的偏移量即可。我们重新加载段寄存器的次数越少越好，因为我们在每条指令和每个内存引用中携带的信息就越少。</p>
+<p>但是我们不能总是使用单个段内的偏移量，因为我们可能要处理多个段。而且偏移量有各种大小，所以对它们都使用唯一的大小也将是一种浪费。这意味着内存地址，或者<em>指针</em>，需要有不同的形状和形式，每种都最适合特定的用例。</p>
+<p><img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2b866b64-fd31-43d2-8ded-4708610e92c0_2160x480.png" alt="Representation of two short pointers: one addressing a higher memory address (possibly a forward jump to skip a conditional branch) and one addressing a lower memory address (probably a backwards jump to return to the beginning of a loop)."></p>
+<p><strong>短指针</strong>只占用 1 字节，表示一个<em>相对</em>地址，相对于正在执行的指令。它们在跳转指令中特别有用，以保持其二进制表示紧凑：跳转出现在每个条件或循环中，并且在许多情况下，条件分支和循环体非常短，以至于最小化表达这些分支点所需的代码量是值得的。</p>
+<p><img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb98b4f6-9c2d-4de9-ad94-aa8a9d0684e4_2160x480.png" alt="Representation of a near pointer."></p>
+<p><strong>近指针</strong>可以引用“上下文”隐含的 64KB 段内的地址，并且长度为 2 字节。例如，像 <code>JMP 12829h</code> 这样的指令通常不需要携带有关此地址引用的段的信息，因为代码跳转几乎总是在发出跳转的代码的同一 CS 内。类似地，像 <code>MOV AX, [5610h]</code> 这样的指令假定给定地址引用当前选择的 DS，这样它就不必每次都表达段。近指针编码的偏移量可以是相对的或绝对的。</p>
+<p><img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F078820e8-d869-4ea8-8bee-01d44e65c572_2160x720.png" alt="Representation of a far pointer referencing an address in another segment."></p>
+<p><strong>远指针</strong>可以通过编码段和偏移量来引用任何内存地址。它们长度为 4 字节。当用于指针算术时，段保持固定，只有偏移量变化。例如，这在迭代数组时很重要，因为我们可以将基地址加载到 DS 或 ES 中一次，然后操作段内的偏移量。但是，这意味着此类迭代的最大范围为 64KB。</p>
+<p><strong>巨指针</strong>类似于远指针，因为它们也是 4 字节长，并且可以引用任何内存地址，但它们消除了指针算术周围的 64KB 限制。它们通过在每次内存访问时重新计算段和偏移量部分来做到这一点（请记住，段是重叠的，因此我们可以为任何物理地址想出多个段/偏移量对）。可以想象，这需要在每次内存访问时进行额外的代码，因此巨指针会对运行时造成明显的负担。</p>
+<h2 id="内存模型">内存模型</h2>
+<p>现在我们已经了解了 8086 分段、EXE 文件和指针类型……我们终于可以将所有这些概念联系在一起，揭开我们在 DOS 的旧编译器中看到的内存模型的神秘面纱。</p>
+<p>以下是细分：</p>
+<ul>
+<li><strong>微型</strong>：这是 COM 映像的内存模型。整个程序适合一个 64KB 段，并且所有段寄存器在启动时都设置为这一个段。这意味着程序中的所有指针都是短指针或近指针，因为它们始终引用这同一个 64KB 段。</li>
+<li><strong>小型</strong>：到处使用近指针，但数据段和堆栈段与代码段不同。这意味着这些程序有 64KB 用于代码，64KB 用于数据。</li>
+<li><strong>紧凑型</strong>：对代码使用短指针，但对数据使用远指针。这意味着这些程序可以使用全部 1 MB 内存空间用于数据，因此，它对于代码尽可能紧凑同时能够加载和引用内存中所有资源的游戏特别有用。</li>
+<li><strong>中等型</strong>：与紧凑型相反。对代码使用远指针，但对数据使用短指针。这种模型很奇怪，因为如果您有一个代码量很大的程序，它很可能也是处理大量数据的程序。</li>
+<li><strong>大型</strong>：到处使用远指针，因此代码和数据都可以引用完整的 1 MB 地址空间。但是，由于远指针的性质，所有内存<em>偏移量</em>最多为 64 KB，这意味着数据结构和数组的大小受到限制。</li>
+<li><strong>巨型</strong>：到处使用巨指针。这通过发出代码来计算每次内存访问的绝对地址来克服大型模型的限制，并允许结构体和数组跨越 64 KB 的内存。显然，这是有代价的：程序代码现在更大，运行时成本也更大。</li>
+</ul>
+<p>就是这样！</p>
+<p>值得强调的是，这些模型都是旧的 C 编译器用来生成代码的<em>约定</em>。如果您用手写汇编，您可以混合和匹配指针类型来做任何您想做的事情，因为这些概念对操作系统没有特殊意义。</p>
+<h2 id="演变到当今世界">演变到当今世界</h2>
+<p>到目前为止，我告诉您的所有内容都是遗留的东西，您可以很容易地将其视为无用的知识。或者你能吗？</p>
+<p>有一件事我没有谈及的是<em>代码密度</em>以及它与性能的关系。我们在代码中选择表达指针的方式对代码密度有直接影响，因此当我们将计算从 8086 之类的 16 位机器发展到当代 64 位机器时，指针表示会增长<em>很多</em>，我们面临一些艰难的选择。</p>
+<p>但是要解释所有这些并回答性能问题，您必须等待下一篇文章。所以现在就订阅，不要错过它！</p>
+<p>更多意味着“下一篇文章”，因为有很多内容需要解释这与当今 64 位世界之间的联系。订阅 Blog System/5 以免错过！</p>
+
+            
+            <script async type="text/javascript">
+/* From extension marp-team.marp-vscode */
+(()=>{var U=Object.defineProperty;var d=($,E)=>U($,"name",{value:E,configurable:!0});(()=>{var $={676:(w,b,g)=>{w.exports=g(185)},185:(w,b)=>{"use strict";var g;g={value:!0};const x={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},k="data-marp-auto-scaling-wrapper",u="data-marp-auto-scaling-svg",c="data-marp-auto-scaling-container",T=class T extends HTMLElement{constructor(){super(),this.svgPreserveAspectRatio="xMinYMid meet";const s=d(i=>([n])=>{const{width:e,height:t}=n.contentRect;this[i]={width:e,height:t},this.updateSVGRect()},"t");this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(s("containerSize")),this.wrapperObserver=new ResizeObserver((...i)=>{s("wrapperSize")(...i),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){var s,i,n,e,t;this.shadowRoot.innerHTML=`
+<style>
+  svg[${u}] { display: block; width: 100%; height: auto; vertical-align: top; }
+  span[${c}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }
+</style>
+<div ${k}>
+  <svg part="svg" ${u}>
+    <foreignObject><span ${c}><slot></slot></span></foreignObject>
+  </svg>
+</div>
+    `.split(/\n\s*/).join(""),this.wrapper=(s=this.shadowRoot.querySelector(`div[${k}]`))!==null&&s!==void 0?s:void 0;const o=this.svg;this.svg=(n=(i=this.wrapper)===null||i===void 0?void 0:i.querySelector(`svg[${u}]`))!==null&&n!==void 0?n:void 0,this.svg!==o&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=(t=(e=this.svg)===null||e===void 0?void 0:e.querySelector(`span[${c}]`))!==null&&t!==void 0?t:void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:s}=this;s&&(s.style.display="inline",requestAnimationFrame(()=>{s.style.display=""}))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(s){const i=d(()=>{const n=(()=>{const e=s.getPropertyValue("--preserve-aspect-ratio");return e?e.trim():`x${(({textAlign:t,direction:o})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if(t==="start"||t==="end"){let a=o==="rtl";return t==="end"&&(a=!a),a?"Max":"Min"}return"Mid"})(s)}YMid meet`})();n!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=n,this.updateSVGRect()),s===this.svgComputedStyle&&requestAnimationFrame(i)},"e");i()}updateSVGRect(){var s,i,n,e,t,o,a;let p=Math.ceil((i=(s=this.containerSize)===null||s===void 0?void 0:s.width)!==null&&i!==void 0?i:0);const h=Math.ceil((e=(n=this.containerSize)===null||n===void 0?void 0:n.height)!==null&&e!==void 0?e:0);this.dataset.downscaleOnly!==void 0&&(p=Math.max(p,(o=(t=this.wrapperSize)===null||t===void 0?void 0:t.width)!==null&&o!==void 0?o:0));const f=(a=this.svg)===null||a===void 0?void 0:a.querySelector(":scope > foreignObject");if(f?.setAttribute("width",`${p}`),f?.setAttribute("height",`${h}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${p} ${h}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=p<=0||h<=0?"0":""),this.container){const _=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=_.startsWith("xmid")||_.startsWith("xmax")?"auto":"0",this.container.style.marginRight=_.startsWith("xmi")?"auto":"0"}}};d(T,"s");let r=T;const m=d((l,{attrs:s={},style:i})=>class extends l{constructor(...n){super(...n);for(const[e,t]of Object.entries(s))this.hasAttribute(e)||this.setAttribute(e,t);this.attachShadow({mode:"open"})}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_update(){const n=i?`<style>:host { ${i} }</style>`:"";let e="<slot></slot>";const{autoScaling:t}=this.dataset;t!==void 0&&(e=`<marp-auto-scaling exportparts="svg:auto-scaling" ${t==="downscale-only"?"data-downscale-only":""}>${e}</marp-auto-scaling>`),this.shadowRoot.innerHTML=n+e}},"o");let v;const j=Symbol();let C;const z="marpitSVGPolyfill:setZoomFactor,",A=Symbol(),D=Symbol(),W=d(()=>{const l=navigator.vendor==="Apple Computer, Inc.",s=l?[B]:[],i={then:n=>(l?(async()=>{if(C===void 0){const e=document.createElement("canvas");e.width=10,e.height=10;const t=e.getContext("2d"),o=new Image(10,10),a=new Promise(p=>{o.addEventListener("load",()=>p())});o.crossOrigin="anonymous",o.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await a,t.drawImage(o,0,0),C=t.getImageData(5,5,1,1).data[3]<128}return C})().then(e=>{n?.(e?[B]:[])}):n?.([]),i)};return Object.assign(s,i)},"h");let H,O;function B(l){const s=typeof l=="object"&&l.target||document,i=typeof l=="object"?l.zoom:l;window[D]||(Object.defineProperty(window,D,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",({data:e,origin:t})=>{if(t===window.origin)try{if(e&&typeof e=="string"&&e.startsWith(z)){const[,o]=e.split(","),a=Number.parseFloat(o);Number.isNaN(a)||(O=a)}}catch(o){console.error(o)}}));let n=!1;Array.from(s.querySelectorAll("svg[data-marpit-svg]"),e=>{var t,o,a,p;e.style.transform||(e.style.transform="translateZ(0)");const h=i||O||e.currentScale||1;H!==h&&(H=h,n=h);const f=e.getBoundingClientRect(),{length:_}=e.children;for(let F=0;F<_;F+=1){const S=e.children[F];if(S.getScreenCTM){const y=S.getScreenCTM();if(y){const I=(o=(t=S.x)===null||t===void 0?void 0:t.baseVal.value)!==null&&o!==void 0?o:0,Z=(p=(a=S.y)===null||a===void 0?void 0:a.baseVal.value)!==null&&p!==void 0?p:0,Y=S.children.length;for(let R=0;R<Y;R+=1){const N=S.children[R];if(N.tagName==="SECTION"){const{style:q}=N;q.transformOrigin||(q.transformOrigin=`${-I}px ${-Z}px`),q.transform=`scale(${h}) matrix(${y.a}, ${y.b}, ${y.c}, ${y.d}, ${y.e-f.left}, ${y.f-f.top}) translateZ(0.0001px)`;break}}}}}}),n!==!1&&Array.from(s.querySelectorAll("iframe"),({contentWindow:e})=>{e?.postMessage(`${z}${n}`,window.origin==="null"?"*":window.origin)})}d(B,"u");function P({once:l=!1,target:s=document}={}){const i=function(n=document){if(n[A])return n[A];let e=!0;const t=d(()=>{e=!1,delete n[A]},"i");Object.defineProperty(n,A,{configurable:!0,value:t});let o=[],a=!1;(async()=>{try{o=await W()}finally{a=!0}})();const p=d(()=>{for(const h of o)h({target:n});a&&o.length===0||e&&window.requestAnimationFrame(p)},"o");return p(),t}(s);return l?(i(),()=>{}):i}d(P,"v"),H=1,O=void 0;const G=P,M=Symbol(),L=d((l=document)=>{if(typeof window>"u")throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const t=window[j];t||customElements.define("marp-auto-scaling",r);for(const o of Object.keys(x)){const a=`marp-${o}`,p=x[o].proto();v!=null||(v=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is")),v&&p!==HTMLElement?t||customElements.define(a,m(p,{style:x[o].style}),{extends:o}):(t||customElements.define(a,m(HTMLElement,x[o])),e.querySelectorAll(`${o}[is="${a}"]`).forEach(h=>{h.outerHTML=h.outerHTML.replace(new RegExp(`^<${o}`,"i"),`<${a}`).replace(new RegExp(`</${o}>$`,"i"),`</${a}>`)}))}window[j]=!0})(l),l[M])return l[M];const s=P({target:l}),i=d(()=>{s(),delete l[M]},"n"),n=Object.assign(i,{cleanup:i,update:()=>L(l)});return Object.defineProperty(l,M,{configurable:!0,value:n}),n},"y");b.browser=L,g=L,g=G}},E={};function V(w){var b=E[w];if(b!==void 0)return b.exports;var g=E[w]={exports:{}};return $[w](g,g.exports,V),g.exports}d(V,"__webpack_require__");var J={};(()=>{"use strict";var w=V(676);function b(){let u,c;const r=d(()=>{const m=document.getElementById("__marp-vscode"),v=!!m;u!==v?(document.body.classList.toggle("marp-vscode",v),v?c=(0,w.browser)():(c?.cleanup(),c=void 0),u=v):v&&c?.update(),u?(m&&g(m),x()):k()},"updateCallback");window.addEventListener("load",()=>window.setTimeout(r,100)),window.addEventListener("vscode.markdown.updateContent",r),r()}d(b,"preview");const g=d(u=>{u.querySelectorAll("[is]").forEach(c=>{if(c.nodeName.includes("-")||document.createElement(c.nodeName).constructor!==c.constructor)return;const{outerHTML:m}=c;c.outerHTML=m,console.debug("[marp-vscode] Custom element has been upgraded forcibly:",m.slice(0,m.indexOf(">")+1||void 0))})},"forceUpgradeCustomElements"),x=d(()=>{const u=document.querySelectorAll("style:not(#__marp-vscode-style,#_defaultStyles,[data-marp-vscode-body])"),c=document.querySelectorAll('link[rel="stylesheet"][href]:not([href*="marp-vscode"])');u.forEach(r=>{r.closest("#__marp-vscode")||(r.dataset.marpVscodeBody=r.textContent??"",r.textContent="")}),c.forEach(r=>{if(r.closest("#__marp-vscode"))return;const{href:m}=r;r.dataset.marpVscodeHref=m,r.removeAttribute("href")})},"removeStyles"),k=d(()=>{const u=document.querySelectorAll("style[data-marp-vscode-body]"),c=document.querySelectorAll("link[data-marp-vscode-href]");u.forEach(r=>{r.textContent=r.dataset.marpVscodeBody||"",delete r.dataset.marpVscodeBody}),c.forEach(r=>{r.href=r.dataset.marpVscodeHref||"",delete r.dataset.marpVscodeHref})},"restoreStyles");b()})()})();})();
+
+</script>
+
+        </body>
+        </html>
