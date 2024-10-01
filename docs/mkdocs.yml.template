@@ -1,0 +1,36 @@
+site_name: 一些零零散散的翻译文章。
+site_dir: ../site  # 修改 site_dir 路径
+
+docs_dir: . 
+
+theme:
+  name: material  # 使用 Material for MkDocs 主题
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+  palette:
+    # scheme: default 
+    # primary: indigo
+    # accent: indigo
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+# nav 配置项将在 workflow 中动态生成

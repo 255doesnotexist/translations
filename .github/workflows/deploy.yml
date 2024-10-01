@@ -23,31 +23,46 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mkdocs-material
+          pip install mkdocs-material pymdown-extensions
 
-      - name: Generate index.md
+      - name: Generate index.md and mkdocs.yml
         run: |
+          cd docs  # 进入 docs 目录
           python - <<PYTHON_END
           import os
+          import yaml
 
           with open('index.md', 'w', encoding='utf-8') as f:
               f.write('# 翻译项目\n\n')  # 设置中文标题
-              for dirname in os.listdir('.'):
-                  if os.path.isdir(dirname):
-                      article_path = os.path.join(dirname, 'article.md')
-                      if os.path.exists(article_path):
-                          title = dirname.replace('-', ' ').title()
+
+          with open('mkdocs.yml.template', 'r', encoding='utf-8') as template_file: # 读取模板文件
+              mkdocs_config = yaml.safe_load(template_file)
+
+          nav_items = []
+          for dirname in os.listdir('.'):
+              if os.path.isdir(dirname) and dirname != '.git':
+                  article_path = os.path.join(dirname, 'article.md')
+                  if os.path.exists(article_path):
+                      title = dirname.replace('-', ' ').title()
+                      nav_items.append({title: article_path})
+                      with open('index.md', 'a', encoding='utf-8') as f:
                           f.write(f'- [{title}]({article_path})\n')
+
+          mkdocs_config['nav'] = nav_items
+
+          with open('mkdocs.yml', 'w', encoding='utf-8') as outfile: # 在 docs 目录下生成 mkdocs.yml
+              yaml.dump(mkdocs_config, outfile, default_flow_style=False, allow_unicode=True)
+
           PYTHON_END
 
-      - name: Commit index.md
+      - name: Commit index.md and mkdocs.yml
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Update index.md"
-          file_pattern: index.md
+          commit_message: "Update index.md and mkdocs.yml"
+          file_pattern: docs/index.md docs/mkdocs.yml
 
       - name: Build website
-        run: mkdocs build
+        run: mkdocs build -f docs/mkdocs.yml  # 指定 mkdocs.yml 文件路径
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
